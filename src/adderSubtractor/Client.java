@@ -14,7 +14,6 @@ public class Client {
         // we are not getting 0 this is called data synchronization mutiple threads share same thing
 
         Count count = new Count();
-        count.value = 0;
 
         Adder adder = new Adder(count);
         Subtractor subtractor = new Subtractor(count);
@@ -25,6 +24,11 @@ public class Client {
 
         //once all tasks are done
         executorService.shutdown();
-        executorService.awaitTermination(10L, TimeUnit.MINUTES);
+        executorService.awaitTermination(5L, TimeUnit.SECONDS);
+        // if I remove synchronized keyword from methods then 0 won't be printed in some cases due to race condition
+        //try increasing for loop limit
+        System.out.println(count.get());
+        System.out.println("Something");
+
     }
 }
