@@ -56,16 +56,48 @@ public class printAlternativelySynchronized {
             }
         }
 
+//        public synchronized void printOddNumbers(){
+//            for(int i=0;i< arr.length;i++){
+//                if((arr[i]%2)!=0){
+//                    System.out.println(arr[i]);
+//                }
+//                try{
+//                    //it will release object monitor lock so printEvenNumber will acquire lock
+//                    wait(100);
+//                }catch (Exception e){
+//
+//                }
+//
+//            }
+//        }
+//
+//        public synchronized void printEvenNumbers(){
+//            for(int i=0;i< arr.length;i++){
+//                if((arr[i]%2)==0){
+//                    System.out.println(arr[i]);
+//                }
+//                try{
+//                    //so when I am using wait(100) it release lock and will start working again
+//                    // after 100 if we don't call any notify method
+//                    wait(100);
+//                }catch (Exception e){
+//
+//                }
+//
+//            }
+//        }
+
+
+        //impl without using synchronized
         public synchronized void printOddNumbers(){
             for(int i=0;i< arr.length;i++){
                 if((arr[i]%2)!=0){
                     System.out.println(arr[i]);
-                }
-                try{
-                    //it will release object monitor lock so printEvenNumber will acquire lock
-                    wait(100);
-                }catch (Exception e){
-
+                    notify();
+                    try{
+                        wait();
+                    }catch (Exception e){
+                    }
                 }
 
             }
@@ -75,13 +107,12 @@ public class printAlternativelySynchronized {
             for(int i=0;i< arr.length;i++){
                 if((arr[i]%2)==0){
                     System.out.println(arr[i]);
+                    notify();
+                    try{
+                        wait();
+                    }catch (Exception e){
+                    }
                 }
-                try{
-                    wait(100);
-                }catch (Exception e){
-
-                }
-
             }
         }
 
