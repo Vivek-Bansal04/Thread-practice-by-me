@@ -2,6 +2,7 @@ package Deadlock;
 
 import java.util.concurrent.SynchronousQueue;
 
+//remove wait and notify to simulate deadlock
 public class Deadlock3 {
     private static Deadlock3 d1 = new Deadlock3();
     private static Deadlock3 d2 = new Deadlock3();
@@ -18,7 +19,7 @@ public class Deadlock3 {
         synchronized (d1){
             try{
                 System.out.println("Hello");
-                Thread.sleep(2000);
+                d1.wait();
             }catch (InterruptedException e){
                 System.out.println("Exception 1");
             }
@@ -38,6 +39,7 @@ public class Deadlock3 {
             }
             synchronized (d1){
                 System.out.println("World1");
+                d1.notify();
             }
         }
     }
