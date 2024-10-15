@@ -64,37 +64,35 @@ public class stream {
 
 
 
-        //1. Filter employees with salary greater than 50,000 and group by department
-        List<Employee> employees = Arrays.asList(
-                new Employee( "John", "HR", 35, 60000),
-                new Employee( "Sarah", "IT", 28, 50000),
-                new Employee( "Mike", "IT", 25, 55000),
-                new Employee( "Anna", "Finance", 30, 40000),
-                new Employee( "Tom", "Finance", 45, 70000)
-        );
+//        //1. Filter employees with salary greater than 50,000 and group by department
+//        List<Employee> employees = Arrays.asList(
+//                new Employee( "John", "HR", 35, 60000),
+//                new Employee( "Sarah", "IT", 28, 50000),
+//                new Employee( "Mike", "IT", 25, 55000),
+//                new Employee( "Anna", "Finance", 30, 40000),
+//                new Employee( "Tom", "Finance", 45, 70000)
+//        );
 
-        Map<Department,List<Employee>> employeeList = employees.stream().filter(employee -> employee.getSalary()>50000)
-                .collect(Collectors.groupingBy(Employee::getDepartment));
-
-        employeeList.forEach((dept,emps) -> {
-            System.out.println(dept + ":" + emps.stream().map(employee -> employee.getName()).collect(Collectors.toList()));
-        });
-
-
-
-        //Filter employees in the "IT" department and group by salary range (above and below 55,000)
-        Map<String,List<Employee>> employeeList = employees.stream().filter(employee -> employee.getDepartMent().equals("IT"))
-                .collect(Collectors.groupingBy(employee -> employee.getSalary()>50000 ? "Above 55K":"Below 55k"));
+//        Map<Department,List<Employee>> employeeList = employees.stream().filter(employee -> employee.getSalary()>50000)
+//                .collect(Collectors.groupingBy(Employee::getDepartment));
+//
+//        employeeList.forEach((dept,emps) -> {
+//            System.out.println(dept + ":" + emps.stream().map(employee -> employee.getName()).collect(Collectors.toList()));
+//        });
 
 
-        //Group employees by department and count the number of employees in each department
-        Map<String, Long> result = employees.stream()
-                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
+
+//        //Filter employees in the "IT" department and group by salary range (above and below 55,000)
+//        Map<String,List<Employee>> employeeList = employees.stream().filter(employee -> employee.getDepartMent().equals("IT"))
+//                .collect(Collectors.groupingBy(employee -> employee.getSalary()>50000 ? "Above 55K":"Below 55k"));
+//
+//
+//        //Group employees by department and count the number of employees in each department
+//        Map<String, Long> result = employees.stream()
+//                .collect(Collectors.groupingBy(Employee::getDepartment, Collectors.counting()));
 
 
 
 
     }
 }
-
-@OneToMany(mappedBy = "tourPack",fetch = FetchType.)
