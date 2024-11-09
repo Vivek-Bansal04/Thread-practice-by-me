@@ -36,6 +36,9 @@ public class Employee{
         Collections.sort(child,new EmployeeComparator());
 
         employees.sort(Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary));
+
+        employees.stream().sorted(Comparator.comparing(Employee::getName).thenComparing(Employee::getSalary))
+                .forEach(System.out::println);
     }
 }
 
